@@ -1,14 +1,4 @@
-"""Classes Cachorro e Gato para o sistema de adoção.
-
-Esperam uma classe Animal em animal.py com o construtor Animal(nome, especie, idade).
-"""
-
-from animal import Animal
-
-
 class Cachorro(Animal):
-    """Animal canino com dados específicos e ficha sanitária própria."""
-
     def __init__(self, nome, idade, porte, cor, raca, vacinas=False, castrado=False):
         super().__init__(nome, "Cachorro", idade)
         self.porte = porte
@@ -32,8 +22,6 @@ class Cachorro(Animal):
 
 
 class Gato(Animal):
-    """Animal felino com dados específicos e ficha sanitária própria."""
-
     def __init__(self, nome, idade, pelagem, cor, raca, vacinas=False, castrado=False):
         super().__init__(nome, "Gato", idade)
         self.pelagem = pelagem
