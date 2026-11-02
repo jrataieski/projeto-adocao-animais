@@ -1,8 +1,6 @@
-"""Funções de cadastro pelo terminal para cães e gatos."""
-
 from classes_animais import Cachorro, Gato
 
-
+#Pergunta pra saber castração e vacinação!!!
 def perguntar_sim_nao(pergunta):
     while True:
         resposta = input(f"{pergunta} (Sim/Não): ").strip().lower()
@@ -22,8 +20,7 @@ def pedir_idade():
 
 
 def cadastrar_cachorro():
-    print("
-Cadastro de cachorro")
+    print("Cadastro de cachorro")
     nome = input("Nome: ")
     idade = pedir_idade()
     porte = input("Porte: ")
@@ -33,15 +30,13 @@ Cadastro de cachorro")
     castrado = perguntar_sim_nao("É castrado?")
 
     cachorro = Cachorro(nome, idade, porte, cor, raca, vacinas, castrado)
-    print("
-Cachorro cadastrado!")
+    print("Cachorro cadastrado!")
     print(cachorro.exibir_ficha_sanitaria())
     return cachorro
 
 
 def cadastrar_gato():
-    print("
-Cadastro de gato")
+    print("Cadastro de gato")
     nome = input("Nome: ")
     idade = pedir_idade()
     pelagem = input("Pelagem: ")
@@ -51,7 +46,6 @@ Cadastro de gato")
     castrado = perguntar_sim_nao("É castrado?")
 
     gato = Gato(nome, idade, pelagem, cor, raca, vacinas, castrado)
-    print("
-Gato cadastrado!")
+    print("Gato cadastrado!")
     print(gato.exibir_ficha_sanitaria())
     return gato
