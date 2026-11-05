@@ -1,0 +1,113 @@
+Sistema de adoção de animais
+
+O abandono de animais é um problema que exige iniciativas que facilitem o encaminhamento de cães e gatos para lares responsáveis. Órgãos de proteção animal precisam organizar informações sobre os animais resgatados, seus tratamentos sanitários e os processos de adoção.
+Nosso projeto propõe o desenvolvimento de um sistema de gerenciamento municipal de adoção de animais, com o objetivo de organizar e facilitar esse processo.
+
+Para quem o sistema será desenvolvido? O sistema foi pensado para gestores públicos, veterinários e servidores que trabalham em órgãos municipais de proteção e bem-estar animal, otimizando o fluxo desde o recolhimento até a destinação final (adoção ou lar temporário).
+
+Ambiente de desenvolvimento: Serão utilizados Draw.io ou DIA para UML, GitHub e Google Collab para compartilhamento do projeto e VSCode e Pycharm para desenvolvimento do código.
+
+Classes
+Animal: armazena informações como nome, espécie, idade e disponibilidade.
+Cachorro: representa animais da espécie canina.
+Gato: representa animais da espécie felina.
+Adotante: armazena os dados das pessoas interessadas em adotar.
+Adocao: registra o animal, o adotante e os dados da adoção.
+
+
+Aplicação dos conceitos
+
+Herança: Cachorro e Gato herdarão características da classe Animal.
+Polimorfismo: o método exibir_ficha_sanitaria() será implementado na classe Animal e sobrescrito pelas classes Cachorro e Gato, permitindo apresentar informações específicas de cada espécie durante o acompanhamento sanitário dos animais resgatados.
+Associação: Adocao relacionará um animal ao respectivo adotante.
+Atributo privado: será utilizado para controlar informações internas, como a situação de adoção.
+Método privado: será utilizado para operações internas, como a geração de códigos de identificação dos animais.
+
+Entrada de Dados
+    • Cadastro de novos animais vindos de apreensões/resgates urbanos (com número de lote ou bairro de origem).
+    • Cadastro de munícipes interessados com verificação de requisitos.
+
+Saída de Dados (Relatórios Municipais)
+    • Relatório de Lotação: Quantos animais estão alojados no momento e quantos estão aptos para adoção.
+    • Relatório de Saúde: Lista de animais que precisam tomar reforço de vacina ou passar por cirurgia de castração.
+    • Termo de Adoção: Emissão de um documento oficial em formato de texto para assinatura do adotante.
+
+Funcionalidades do Programa
+    • Controle de entrada e resgate: Registrar a chegada de um animal, informando data, local do resgate e estado de saúde inicial.
+    • Controle Sanitário: Atualizar informações sobre vacinas, status de castração e condições de saúde.
+    • Gestão de Adotantes: Cadastrar possíveis adotantes e verificar se cumprem os critérios legais para adoção (maior idade, comprovante de residência).
+    • Processo de Adoção Oficial: Efetivar a adoção, mudando o status do animal de "Em Acolhimento Municipal" para "Adotado" e gerando o registro do novo tutor.
+   
+   
+   
+   
+   
+   1. ADOTANTE
+ Representar a pessoa que deseja adotar um animal, armazenando seus dados pessoais.
+Atributos:
+    • nome: Armazena o nome do adotante.
+    • cpf: Armazena o CPF do adotante.
+    • idade: Armazena a idade do adotante.
+    • endereco: Armazena o endereco residencial.
+    • comprovante_residencia: Indica se o adotante possui comprovante de residencia.
+    • telefone: Armazena o telefone para contato.
+Métodos:
+    • init(): Inicializa o objeto com os dados do adotante.
+    • verificar_requisitos(): Verifica se o adotante atende aos requisitos para realizar uma adoção.
+
+    2. ADOCAO
+ Gerencia o processo de adoção de um animal por um adotante.
+Atributos:
+    • data_adocao: Armazena a data da adoção.
+    • termo_adocao: Armazena as informações do termo de adoção.
+    • status_adocao: Indica a situação atual da adoção.
+Métodos:
+    • init(): Inicializa a adoção com o animal, o adotante e a data.
+    • registrar_adocao(): Registra a adoção e indica se a operação foi realizada com sucesso.
+    • gerar_termo_adocao(): Gera o termo formal da adoção.
+
+    3. ANIMAL
+ Representa os animais cadastrados no sistema e controla sua disponibilidade para adoção.
+Atributos:
+    • nome: Armazena o nome do animal.
+    • especie: Identifica a espécie do animal (cachorro ou gato).
+    • idade: Armazena a idade do animal.
+    • disponibilidade: Indica se o animal esta disponível para adoção.
+    • situacao_adocao: Informa a situação do processo de adoção.
+Métodos:
+    • init(): Inicializa o animal com nome, espécie e idade.
+    • _gerar_codigo(): Gera um código de identificação para o animal.
+    • atualizar_disponibilidade(): Atualiza a disponibilidade do animal.
+    • exibir_ficha_sanitaria(): Exibe as informações sanitárias do animal.
+    
+    4. GATO
+ Representa os gatos cadastrados no sistema, herdando características da classe Animal e adicionando informações especificas.
+Atributos:
+    • pelagem: Descreve a pelagem do gato.
+    • cor: Armazena a cor do gato.
+    • raca: Identifica a raça do gato.
+    • vacinas: Armazena informações sobre as vacinas.
+    • castrado: Indica se o gato é castrado.
+Métodos:
+    • init(): Inicializa o gato com suas características e informações sanitárias.
+    • exibir_ficha_sanitaria(): Exibe as informações sanitárias do animal.
+
+    5. CACHORRO
+ Representa os cachorros cadastrados no sistema, herdando características da classe Animal e adicionando informações especificas.
+Atributos:
+    • porte: Indica o porte do cachorro.
+    • cor: Armazena a cor do cachorro.
+    • raca: Identifica a raça do cachorro.
+    • vacinas: Armazena informações sobre as vacinas.
+    • castrado: Indica se o cachorro é castrado.
+Métodos:
+    • init(): Inicializa o cachorro com suas características e informações sanitárias.
+    • exibir_ficha_sanitaria(): Exibe as informações sanitárias do animal.
+
+Entradas do sistema: Os dados serão fornecidos pelo usuário através do teclado, incluindo informações dos animais, dados dos adotantes, identificação do animal pretendido e informações necessárias para o registo da adoção.
+Leitura de arquivos: Não.
+Persistência dos dados: Sim, terá.
+Interface: No momento, o sistema utilizará um menu textual no terminal, através do qual o utilizador poderá cadastrar, consultar e atualizar informações, além de registar adoções. Sujeito a alterações.
+Interação com o usuário: O programa solicitará os dados necessários, validará as informações e apresentará mensagens de orientação, sucesso ou erro.
+Saídas do sistema: A implementação apresentará listagens de animais e adotantes, informações sobre as adoções registadas, mensagens sobre a validação dos requisitos e termos de adoção gerados em formato textual. A disponibilidade do animal será atualizada somente após a confirmação do registo da adoção.
+

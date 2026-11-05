@@ -1,3 +1,20 @@
+class Animal:
+    def __init__(self, nome, especie, idade):
+        self.nome = nome
+        self.especie = especie
+        self.idade = idade
+        self.disponibilidade = True  
+        self.situacao_adocao = "Disponível" #todo o animal comeecara como disponivel
+
+    def atualizar_disponibilidade(self, status):
+        # Altera se o animal estiver disponivel ou nao
+        self.disponibilidade = status
+        if not status:
+            self.situacao_adocao = "Adotado"
+        else:
+            self.situacao_adocao = "Disponível"
+
+
 class Cachorro(Animal):
     def __init__(self, nome, idade, porte, cor, raca, vacinas=False, castrado=False):
         super().__init__(nome, "Cachorro", idade)
