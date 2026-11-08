@@ -29,6 +29,7 @@ def cadastrar_cachorro():
     raca = input("Raça: ")
     vacinas = perguntar_sim_nao("Está vacinado?")
     castrado = perguntar_sim_nao("É castrado?")
+    
 
     cachorro = Cachorro(nome, idade, porte, cor, raca, vacinas, castrado)
     print("Cachorro cadastrado!")
@@ -45,6 +46,7 @@ def cadastrar_gato():
     raca = input("Raça: ")
     vacinas = perguntar_sim_nao("Está vacinado?")
     castrado = perguntar_sim_nao("É castrado?")
+    print("\n")
 
     gato = Gato(nome, idade, pelagem, cor, raca, vacinas, castrado)
     print("Gato cadastrado!")
