@@ -1,4 +1,5 @@
 from cadastro import cadastrar_cachorro, cadastrar_gato, cadastrar_adotante
+from adocao import Adocao
 
 adotantes = []
 gatos = []
@@ -24,12 +25,14 @@ while True:
 
         if tipo_animal == "1":
             cachorro = cadastrar_cachorro()
-            cachorros.append(cachorro)  
+            cachorros.append(cachorro)
+            print("Animal cadastrado com sucesso.")
         elif tipo_animal == "2":
             gato = cadastrar_gato()
-            gatos.append(gato)  
+            gatos.append(gato)
+            print("Animal cadastrado com sucesso.")
         else:
-            print("Opção inválida.")
+             print("Opção inválida.")
 
     elif opcao == "2":
         print("\n=== CADASTRO DE ADOTANTE ===")
@@ -41,6 +44,36 @@ while True:
         if not adotantes:
             print("Não há adotantes cadastrados.")
             continue
+
+        disponiveis = [a for a in cachorros + gatos if a.disponibilidade]
+        if not disponiveis:
+            print("Não há animais disponíveis para adoção.")
+            continue
+
+        print("\n--- ANIMAIS DISPONÍVEIS ---")
+        for i, a in enumerate(disponiveis, start=1):
+            print(f"{i}. {a.nome} ({a.especie})")
+        escolha_animal= input("Digite o número do animal: ")
+
+        print("\n --- ADOTANTES ---")
+        for i, ad in enumerate(adotantes, start=1):
+            print(f"{i}. {ad.nome}")
+        escolha_adotante = input("Digite o número do adotante: ")
+
+        if not escolha_animal.isdigit() or not escolha_adotante.isdigit():
+            print("Digite apenas números.")
+            continue
+
+        if not 1 <= int(escolha_animal) <= len(disponiveis) or not 1 <= int(escolha_adotante) <= len(adotantes):
+            print("Número fora da lista.")
+            continue
+
+        animal = disponiveis[int(escolha_animal) - 1]
+        adotante = adotantes[int(escolha_adotante) - 1]
+
+        adocao = Adocao(animal, adotante)
+        if adocao.registrar_adocao():
+            animais_adotados.append(animal)
 
     
     elif opcao == "4":
