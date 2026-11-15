@@ -1,4 +1,6 @@
 class Animal:
+    __contador = 0
+
     def __init__(self, nome, especie, idade, cor, raca, vacinas=False, castrado = False):
         self.nome = nome
         self.especie = especie
@@ -8,15 +10,24 @@ class Animal:
         self.vacinas = vacinas
         self.castrado = castrado
         self.disponibilidade = True  
-        self.situacao_adocao = "Disponível" #todo o animal comeecara como disponivel
+        self.__situacao_adocao = "Disponível" #todo o animal comeecara como disponivel
+        self.codigo = self.__gerar_codigo()
+
+    @property
+    def situacao_adocao(self):
+        return self.__situacao_adocao
+
+    def __gerar_codigo(self):
+        Animal.__contador += 1
+        return f"{self.especie[:3].upper()}-{Animal.__contador:03d}"
 
     def atualizar_disponibilidade(self, status):
         # Altera se o animal estiver disponivel ou nao
         self.disponibilidade = status
         if not status:
-            self.situacao_adocao = "Adotado"
+            self.__situacao_adocao = "Adotado"
         else:
-            self.situacao_adocao = "Disponível"
+            self.__situacao_adocao = "Disponível"
 
     def detalhe_especifico(self):
         raise NotImplementedError
@@ -31,7 +42,8 @@ class Animal:
             f"Cor: {self.cor}\n"
             f"Raça: {self.raca}\n"
             f"Vacinado: {vacinas}\n"
-            f"Castrado: {castracao}"
+            f"Castrado: {castracao}\n"
+            f"Código: {self.codigo}"
         )
 
 class Cachorro(Animal):
