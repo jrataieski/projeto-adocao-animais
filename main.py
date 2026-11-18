@@ -1,5 +1,6 @@
 from cadastro import cadastrar_cachorro, cadastrar_gato, cadastrar_adotante
 from adocao import Adocao
+from relatorios import gerar_relatorio_lotacao, gerar_relatorio_saude, exportar_json # < relatorios json
 
 adotantes = []
 gatos = []
@@ -8,20 +9,22 @@ animais_adotados = []
 
 
 while True:
-    print("\n=== MENU DE ADOÇÃO ===")
+    print("\nMENU DE ADOÇÃO DE ANIMAIS")
     print("1. Cadastrar animal")
     print("2. Cadastrar adotante")
     print("3. Registrar adoção")
     print("4. Consultar animais cadastrados")
     print("5. Consultar adotantes cadastrados")
-    print("6. Sair")
+    print("6. Gerar Relatórios Municipais")
+    print("7. Sair")
     opcao = input("Escolha uma opção: ")
 
     if opcao == "1":
-        print("\n=== CADASTRO DE ANIMAL ===")
+        print("\nCADASTRO DE ANIMAL")
         print("1. Cadastrar cachorro")
         print("2. Cadastrar gato")
         tipo_animal = input("Escolha o tipo de animal: ")
+    
 
         if tipo_animal == "1":
             cachorro = cadastrar_cachorro()
@@ -35,12 +38,12 @@ while True:
              print("Opção inválida.")
 
     elif opcao == "2":
-        print("\n=== CADASTRO DE ADOTANTE ===")
+        print("\nCADASTRO DE ADOTANTE")
         adotante = cadastrar_adotante()
         adotantes.append(adotante)
 
     elif opcao == "3":
-        print("\n=== REGISTRAR ADOÇÃO ===")
+        print("\nREGISTRAR ADOÇÃO")
         if not adotantes:
             print("Não há adotantes cadastrados.")
             continue
@@ -77,7 +80,7 @@ while True:
 
     
     elif opcao == "4":
-        print("\n=== CONSULTAR ANIMAIS ===")
+        print("\nCONSULTAR ANIMAIS")
         print("1. Apenas Cachorros")
         print("2. Apenas Gatos")
         print("3. Todos os Animais")
@@ -111,7 +114,7 @@ while True:
                 print(f"Situação da Adoção: {animal.situacao_adocao}")
 
     elif opcao == "5":
-        print("\n=== CONSULTAR ADOTANTES ===")
+        print("\nCONSULTAR ADOTANTES")
         if not adotantes:
             print("Nenhum adotante cadastrado.")
         else:
@@ -128,7 +131,27 @@ while True:
                 print(f"Telefone: {adotante.telefone}")
                 print(f"Comprovante de residência: {comprovante_texto}")
 
-
     elif opcao == "6":
+        print("\nRELATÓRIOS MUNICIPAIS")
+        print("1. Relatório de Lotação")
+        print("2. Relatório de Saúde (Vacinas/Castração)")
+        escolha_rel = input("Escolha o relatório desejado: ")
+
+        if escolha_rel == "1":
+            rel_lotacao = gerar_relatorio_lotacao(cachorros, gatos)
+            salvar = input("Deseja exportar este relatório para JSON? (Sim/Não): ").strip().lower()
+            if salvar == "sim":
+                exportar_json(rel_lotacao, "relatorio_lotacao.json")
+                
+        elif escolha_rel == "2":
+            rel_saude = gerar_relatorio_saude(cachorros, gatos)
+            salvar = input("Deseja exportar este relatório para JSON? (Sim/Não): ").strip().lower()
+            if salvar == "sim":
+                exportar_json(rel_saude, "relatorio_saude.json")
+        else:
+            print("Opção inválida.")
+
+    elif opcao == "7": 
         print("\nSaindo do sistema. Até logo!")
         break
+    
