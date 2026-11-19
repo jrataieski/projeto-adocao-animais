@@ -46,10 +46,9 @@ Divisão das tarefas
 
 2. Diagrama UML
 
-
-
 O diagrama abaixo é a versão final, atualizada para refletir o código entregue. A notação "-" indica membro privado e "+" indica membro público. As funções dos módulos cadastro.py e relatorios.py e o menu do main.py não são classes, por isso não aparecem no diagrama.
 Relações: Cachorro e Gato herdam de Animal (herança). Adocao se associa a um Animal e a um Adotante (um adotante pode ter zero ou mais adoções; cada adoção envolve um animal).
+ ![Diagrama UML do Sistema de Adoção de Animais](Diagrama UML G2.png)  
  
 2.1 Adotante
 Representa a pessoa que deseja adotar um animal, armazenando seus dados pessoais.
