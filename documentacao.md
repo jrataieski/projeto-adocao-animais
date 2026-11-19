@@ -50,7 +50,7 @@ O diagrama abaixo é a versão final, atualizada para refletir o código entregu
 
 Relações: Cachorro e Gato herdam de Animal (herança). Adocao se associa a um Animal e a um Adotante.
 
-
+![Diagrama UML do Sistema de Adoção de Animais](UML.png)
  
 2.1 Adotante
 Representa a pessoa que deseja adotar um animal, armazenando seus dados pessoais.
